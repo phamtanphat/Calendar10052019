@@ -2,6 +2,8 @@ package khoapham.ptp.phamtanphat.calendarandroid10052019;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -18,6 +20,11 @@ public class MainActivity extends AppCompatActivity {
 //        int ngay = calendar.get(Calendar.DATE);
 //        int thang = calendar.get(Calendar.MONTH);
 //        int nam = calendar.get(Calendar.YEAR);
+//        Notifcation,
+//                BroadcastReceiver,
+//                PendingIntent,
+//                Alarm,
+//                Calendar
         long currentTime = calendar.getTimeInMillis();
         long currentTimeSystem = System.currentTimeMillis();
 
