@@ -50,7 +50,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         txtSoluong = findViewById(R.id.textviewSoluong);
 
         calendarMin = Calendar.getInstance();
+        calendarMax = Calendar.getInstance();
+
         edtNgaymin.setOnClickListener(this);
+        edtNgaymax.setOnClickListener(this);
     }
     @Override
     public void onClick(View v) {
@@ -60,11 +63,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 datepickerdialogMin();
                 return;
             case R.id.edittextNgaymax:
+                datepickerdialogMax();
                 return;
             default:
                 return;
         }
     }
+
+    private void datepickerdialogMax() {
+        int year = calendarMax.get(Calendar.YEAR);
+        int month = calendarMax.get(Calendar.MONTH);
+        int date = calendarMax.get(Calendar.DATE);
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this , new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                calendarMax.set(year , month , dayOfMonth);
+                edtNgaymax.setText(formatDate(calendarMax.getTimeInMillis()));
+            }
+        },year,month,date);
+        datePickerDialog.show();
+    }
+
     private String formatDate(long time){
         if (simpleDateFormat == null){
             simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
