@@ -2,6 +2,7 @@ package khoapham.ptp.phamtanphat.calendarandroid10052019;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
@@ -9,6 +10,7 @@ import android.content.BroadcastReceiver;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EditText edtNgaymin, edtNgaymax;
     Calendar calendarMin,calendarMax;
     SimpleDateFormat simpleDateFormat;
+    long tongngay = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,8 +52,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnTinh = findViewById(R.id.buttonTinhngay);
         txtSoluong = findViewById(R.id.textviewSoluong);
 
+
         calendarMin = Calendar.getInstance();
         calendarMax = Calendar.getInstance();
+
 
         edtNgaymin.setOnClickListener(this);
         edtNgaymax.setOnClickListener(this);
@@ -75,6 +80,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void calcalutorDate() {
+        if (calendarMax.getTimeInMillis() - calendarMin.getTimeInMillis() > 0){
+            tongngay = calendarMax.getTimeInMillis() - calendarMin.getTimeInMillis();
+            txtSoluong.setText((tongngay / (24 * 60 * 60 * 1000) + " ngày"));
+        }
     }
 
     private void datepickerdialogMax() {
