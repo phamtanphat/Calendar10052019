@@ -25,11 +25,11 @@ public class MainActivity extends AppCompatActivity {
 //                PendingIntent,
 //                Alarm,
 //                Calendar
-        long currentTime = calendar.getTimeInMillis();
-        long currentTimeSystem = System.currentTimeMillis();
+//        long currentTime = calendar.getTimeInMillis();
+//        long currentTimeSystem = System.currentTimeMillis();
 
 //        int ngay = (int) (currentTime / (60 * 60 * 24 * 1000));
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
-        Log.d("BBB",simpleDateFormat.format(currentTime));
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
+//        Log.d("BBB",simpleDateFormat.format(currentTime));
     }
 }
