@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         edtNgaymin.setOnClickListener(this);
         edtNgaymax.setOnClickListener(this);
+        btnTinh.setOnClickListener(this);
     }
     @Override
     public void onClick(View v) {
@@ -65,9 +66,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.edittextNgaymax:
                 datepickerdialogMax();
                 return;
+            case R.id.buttonTinhngay:
+                calcalutorDate();
+                return;
             default:
                 return;
         }
+    }
+
+    private void calcalutorDate() {
     }
 
     private void datepickerdialogMax() {
@@ -81,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 edtNgaymax.setText(formatDate(calendarMax.getTimeInMillis()));
             }
         },year,month,date);
+        datePickerDialog.getDatePicker().setMinDate(calendarMin.getTimeInMillis() + (24 * 60 * 60 * 1000));
         datePickerDialog.show();
     }
 
