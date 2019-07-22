@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btnTinh;
     EditText edtNgaymin, edtNgaymax;
     Calendar calendarMin,calendarMax;
+    SimpleDateFormat simpleDateFormat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +65,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return;
         }
     }
-
+    private String formatDate(long time){
+        if (simpleDateFormat == null){
+            simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        }
+        return simpleDateFormat.format(time);
+    }
     private void datepickerdialogMin() {
         int year = calendarMin.get(Calendar.YEAR);
         int month = calendarMin.get(Calendar.MONTH);
@@ -73,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 calendarMin.set(year , month , dayOfMonth);
+                edtNgaymin.setText(formatDate(calendarMin.getTimeInMillis()));
             }
         },year,month,date);
         datePickerDialog.show();
